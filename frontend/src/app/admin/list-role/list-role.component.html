@@ -1,0 +1,19 @@
+<div class="bgComponent">
+    <div class="accordion_display">
+        <div class="accordion_size">
+            <mat-accordion multi="true" *ngIf="roleData.length">
+                <mat-expansion-panel *ngFor="let role of roleData" hideToggle="false">
+                    <mat-expansion-panel-header>
+                        {{ role.name }}
+                    </mat-expansion-panel-header>
+                    <mat-panel-description>
+                        {{ role.description }}
+                    </mat-panel-description>
+                    <mat-action-row>
+                        <mat-icon>edit</mat-icon>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>
