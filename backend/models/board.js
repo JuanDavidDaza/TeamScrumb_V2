@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 
 const boardSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.ObjectId, ref: "user" },
+  tabletId: { type: mongoose.Schema.ObjectId, ref: "tablet" },
   name: String,
   description: String,
   taskStatus: String,

@@ -63,7 +63,9 @@ export class SaveTaskComponent implements OnInit {
       this.registerData = {};
     } else {
       const data = new FormData();
-      data.append('image', this.selectedFile, this.selectedFile.name);
+      if (this.selectedFile !=null) {
+        data.append('image', this.selectedFile, this.selectedFile.name);
+      }
       data.append('name', this.registerData.name);
       data.append('description', this.registerData.description);
 

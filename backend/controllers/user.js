@@ -55,7 +55,6 @@ const listUser = async (req, res) => {
   const users = await User.find({
     $and: [{ name: new RegExp(req.params["name"], "i") }, { dbStatus: "true" }],
   })
-    .populate("roleId")
     .exec();
   if (!users || users.length === 0)
     return res.status(400).send("No search results");
@@ -111,10 +110,7 @@ const registerAdmin = async (req, res) => {
 
   const role = await Role.findOne({ name: req.body.role });
   if (!role) return res.status(400).send("Invalid role");
-
-  //const validId = await Role.findOne({ name: req.body.name });
-  //if (!validId) return res.status(400).send("Invalid role");
-
+  
   const existingUser = await User.findOne({ email: req.body.email });
   if (existingUser)
     return res.status(400).send("The user is already registered");

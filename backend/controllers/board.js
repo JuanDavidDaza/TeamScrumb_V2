@@ -21,7 +21,35 @@ const saveTask = async (req, res) => {
 };
 
 const listTask = async (req, res) => {
-  const board = await Board.find({ userId: req.user._id });
+  const board = await Board.find(
+    { userId: req.user._id}
+  );
+  if (!board || board.length === 0)
+    return res.status(400).send("You have no assigned tasks");
+  return res.status(200).send({ board });
+};
+
+
+const listTaskTo = async (req, res) => {
+  const board = await Board.find(
+    { userId: req.user._id,taskStatus: 'to-do' }
+  );
+  if (!board || board.length === 0)
+    return res.status(400).send("You have no assigned tasks");
+  return res.status(200).send({ board });
+};
+const listTaskIn = async (req, res) => {
+  const board = await Board.find(
+    { userId: req.user._id,taskStatus: 'in-pogress' }
+  );
+  if (!board || board.length === 0)
+    return res.status(400).send("You have no assigned tasks");
+  return res.status(200).send({ board });
+};
+const listTaskDo = async (req, res) => {
+  const board = await Board.find(
+    { userId: req.user._id,taskStatus: 'done' }
+  );
   if (!board || board.length === 0)
     return res.status(400).send("You have no assigned tasks");
   return res.status(200).send({ board });
@@ -78,9 +106,19 @@ const deleteTask = async (req, res) => {
   const validId = mongoose.Types.ObjectId.isValid(req.params._id);
   if (!validId) return res.status(400).send("Invalid id");
 
+  let taskImg= await Board.findById(req.params._id);
+  taskImg= taskImg.imageUrl;
+  taskImg = taskImg.split("/")[4];
+  let serverImg="./uploads/"+taskImg
   const board = await Board.findByIdAndDelete(req.params._id);
   if (!board) return res.status(400).send("Task not found");
+  try {
+    fs.unlinkSync(serverImg);
+  } catch (error) {
+    console.log("image no found in serve");
+  }
+
   return res.status(200).send({ message: "Task deleted" });
 };
 
-module.exports = { saveTask, listTask, updateTask, deleteTask, saveTaskImg };
+module.exports = { saveTask, listTask,listTaskDo,listTaskIn,listTaskTo, updateTask, deleteTask, saveTaskImg };

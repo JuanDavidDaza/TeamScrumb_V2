@@ -14,6 +14,9 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class ListTaskComponent implements OnInit {
   taskData: any;
+  taskDataTo:string = '';
+  taskDataIn:string = '';
+  taskDataDo:string = '';
   message: string = '';
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'top';
@@ -35,8 +38,45 @@ export class ListTaskComponent implements OnInit {
         this.message = err.error;
         this.openSnackBarError();
       }
+    
     );
+   
   }
+  /*
+  
+   this._boardService.listTaskDo().subscribe(
+      (res) => {
+        this.taskDataDo = res.board;
+      },
+      (err) => {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    
+    );
+    this._boardService.listTaskIn().subscribe(
+      (res) => {
+        this.taskDataIn = res.board;
+      },
+      (err) => {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    
+    );
+    this._boardService.listTaskTo().subscribe(
+      (res) => {
+        this.taskDataTo = res.board;
+      },
+      (err) => {
+        this.message = err.error;
+        this.openSnackBarError();
+      }
+    
+    );
+  
+  
+  */
 
   updateTask(task: any, status: string) {
     let tempStatus = task.taskStatus;
@@ -87,4 +127,16 @@ export class ListTaskComponent implements OnInit {
       panelClass: ['style-snackBarFalse'],
     });
   }
+ 
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+
 }

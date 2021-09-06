@@ -68,3 +68,224 @@
     </div>
   </div>
 </div>
+
+<div class="bgComponent">
+  <div class="row text-center">
+    <div class="col-4">
+      <div class="accordion_display">
+        <div class="accordion_size" *ngIf="taskData.length">
+          <h2><span class="badge bg-dark">to-do</span></h2>
+          <mat-accordion multi="true" *ngFor="let task of taskData" >
+            <mat-expansion-panel  hideToggle="false" *ngIf="task.taskStatus == 'to-do'">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                  <span>{{ task.name }}</span>
+                  <span class="spacer"></span>
+                  <button class="btnDone" *ngIf="task.taskStatus == 'done'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnInProgress" *ngIf="task.taskStatus == 'in-progress'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnToDo" *ngIf="task.taskStatus == 'to-do'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-panel-description>
+                {{ task.description }}
+              </mat-panel-description>
+              <mat-panel-description>
+                <img class="card-img-top image_center" src="{{ task.imageUrl }}" />
+              </mat-panel-description>
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(task, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(task, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(task, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(task)">delete</mat-icon>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="accordion_display">
+        <div class="accordion_size" *ngIf="taskData.length" >
+          <h2><span class="badge bg-dark">in-progress</span></h2>
+          <mat-accordion multi="true" *ngFor="let task of taskData" >
+            <mat-expansion-panel  hideToggle="false" *ngIf="task.taskStatus == 'in-progress'">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                  <span>{{ task.name }}</span>
+                  <span class="spacer"></span>
+                  <button class="btnDone" *ngIf="task.taskStatus == 'done'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnInProgress" *ngIf="task.taskStatus == 'in-progress'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnToDo" *ngIf="task.taskStatus == 'to-do'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-panel-description>
+                {{ task.description }}
+              </mat-panel-description>
+              <mat-panel-description>
+                <img class="card-img-top image_center" src="{{ task.imageUrl }}" />
+              </mat-panel-description>
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(task, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(task, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(task, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(task)">delete</mat-icon>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="accordion_display">
+        <div class="accordion_size" *ngIf="taskData.length">
+          <h2><span class="badge bg-dark">Done</span></h2>
+          <mat-accordion multi="true" *ngFor="let task of taskData" >
+            <mat-expansion-panel  hideToggle="false" *ngIf="task.taskStatus == 'done'">
+              <mat-expansion-panel-header >
+                <mat-panel-title>
+                  <span>{{ task.name }}</span>
+                  <span class="spacer"></span>
+                  <button class="btnDone" *ngIf="task.taskStatus == 'done'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnInProgress" *ngIf="task.taskStatus == 'in-progress'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                  <button class="btnToDo" *ngIf="task.taskStatus == 'to-do'" mat-raised-button>
+                    {{ task.taskStatus }}
+                  </button>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-panel-description>
+                {{ task.description }}
+              </mat-panel-description>
+              <mat-panel-description>
+                <img class="card-img-top image_center" src="{{ task.imageUrl }}" />
+              </mat-panel-description>
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(task, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(task, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(task, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(task)">delete</mat-icon>
+              </mat-action-row>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="bgComponent">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">To-Do</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'to-do'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">In-Progress</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'in-progress'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">Done</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'done'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

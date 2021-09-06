@@ -43,7 +43,7 @@ export class UserService {
     return this._http.get<any>(this.env + 'user/getRole/' + email);
   }
 
-  listUser(name: string) {
+  listUser(name: any) {
     return this._http.get<any>(this.env + 'user/listUsers/' + name);
   }
 

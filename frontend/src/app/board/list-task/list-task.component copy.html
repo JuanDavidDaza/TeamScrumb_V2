@@ -1,0 +1,81 @@
+
+
+
+<div class="bgComponent">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">To-Do</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'to-do'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">In-Progress</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'in-progress'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <h2><span class="badge bg-dark">Done</span></h2>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let movie of taskData">
+            <div class="example-box" *ngIf="movie.taskStatus == 'done'" cdkDrag>
+              <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+              {{movie.name}}
+              <mat-action-row>
+                <button class="btnSelectTodo" mat-button (click)="updateTask(movie, 'to-do')">
+                  to-do
+                </button>
+                <button class="btnSelectInProgress" mat-button (click)="updateTask(movie, 'in-progress')">
+                  In-progress
+                </button>
+                <button class="btnSelectDone" mat-button (click)="updateTask(movie, 'done')">
+                  done
+                </button>
+                <span class="spacer"></span>
+                <mat-icon color="primary" (click)="deleteTask(movie)">delete</mat-icon>
+              </mat-action-row>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
